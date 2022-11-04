@@ -1,0 +1,7 @@
+name = "BubbleMsh"
+uuid = "bf8c1ae3-8f5f-4669-a3ad-e0fb1ebdb2da"
+authors = ["Wu Junchao <jmwjc@163.com>"]
+version = "0.1.0"
+
+[deps]
+Triangle = "56f361f5-126b-55db-87fb-1c71988fcde4"
