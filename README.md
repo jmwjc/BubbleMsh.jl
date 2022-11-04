@@ -25,10 +25,10 @@ bubblemsh(filename::String,xc::Vector{Float64},d::Vector{Float64},n::Int,r::Floa
 ```
 Arguments:
 
-    - filename: name(or path) of `msh` file
-    - xc: the coordiantes of centric point used for generating
-    - d: the max distance between centric point and generated point in each directions
-    - n: number of generated points
-    - r: characteristic distance between each points
-    - h: length of time steps in Runge-Kutta method
+  - filename: name(or path) of `msh` file
+  - xc: the coordiantes of centric point used for generating
+  - d: the max distance between centric point and generated point in each directions
+  - n: number of generated points
+  - r: characteristic distance between each points
+  - h: length of time steps in Runge-Kutta method
 
