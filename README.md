@@ -10,7 +10,7 @@ As this package has not registered, you can install this package by the followin
 2. open `Julia` and enter `pkg` mode.
 3. set up package by this common:
 ```julia
-dev <locol path of BubbleMsh.jl>
+dev <local path of BubbleMsh.jl>
 ```
 
 ## Usage
