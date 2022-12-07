@@ -1,10 +1,10 @@
 module BubbleMsh
 
+import TriangleMesh: create_mesh
 """
 Bubble mesh generator implemented by `Julia`
 """
 
-import Triangle: basic_triangulation
 export bubblemsh
 
 """
@@ -63,7 +63,7 @@ function bubblemsh(filename::String,xc::Vector{Float64},d::Vector{Float64},n::In
             for i in 1:m
                 write(fo,readline(fi)*"\n")
             end
-            triangle = basic_triangulation(x,collect(1:(n+k)))
+            triangle = create_mesh(x[:,1:2])
             for (i,ids) in enumerate(triangle)
                 write(fo,"$(m+i) 2 2 $phytag 1 $(ids[1]) $(ids[2]) $(ids[3])\n")
             end
