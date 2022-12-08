@@ -1,6 +1,6 @@
 module BubbleMsh
 
-import TriangleMesh: create_mesh
+import Triangulate: triangulate, TriangulateIO, numberoftriangles
 """
 Bubble mesh generator implemented by `Julia`
 """
@@ -63,9 +63,13 @@ function bubblemsh(filename::String,xc::Vector{Float64},d::Vector{Float64},n::In
             for i in 1:m
                 write(fo,readline(fi)*"\n")
             end
-            triangle = create_mesh(x[:,1:2])
-            for (i,ids) in enumerate(triangle)
-                write(fo,"$(m+i) 2 2 $phytag 1 $(ids[1]) $(ids[2]) $(ids[3])\n")
+            # using Triangulate to generate mesh
+            triin = TriangulateIO()
+            pointlist = x[:,1:2]'
+            triin.pointlist = pointlist
+            (triout, vorout)=triangulate("Q", triin)
+            for i in 1:numberoftriangles(triout)
+                write(fo,"$(m+i) 2 2 $phytag 1 $(triout.trianglelist[1,i]) $(triout.trianglelist[2,i]) $(triout.trianglelist[3,i])\n")
             end
         else
             write(fo,line*"\n")
