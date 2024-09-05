@@ -89,7 +89,7 @@ function bubble!(x::Matrix{Float64},x_::Matrix{Float64},r::Float64,h::Float64)
     k = 1.47/2/r
     c = 1.4*k^0.5
     iter = 0
-    while iter < 10000
+    while iter < 200
         iter += 1
         p = zeros(nₚ,3)
         for i in 1:nₚ
@@ -128,10 +128,10 @@ function bubble!(x::Matrix{Float64},x_::Matrix{Float64},r::Float64,h::Float64)
             end
         end
 
-        rep = p[:,1]'*p[:,1] + p[:,2]'*p[:,2] + p[:,3]'*p[:,3]
+        rep = (p[:,1]'*p[:,1] + p[:,2]'*p[:,2] + p[:,3]'*p[:,3])/n
         println("iter = $iter")
         println("rep = $rep")
-        rep < 1e-10 ? break : nothing
+        rep < 1e-5 ? break : nothing
 
         y = zeros(nₚ,3)
         for i in 1:nₚ
